@@ -30,6 +30,7 @@ public class Config {
 
     public static ForgeConfigSpec.IntValue REFRESH_TICKS;
     public static ForgeConfigSpec.BooleanValue REPLACE_PLAYER_LIST;
+    public static ForgeConfigSpec.DoubleValue MIN_MEAN_TIME_TICK;
     public static ForgeConfigSpec.BooleanValue OP_ONLY_MODE;
     public static ForgeConfigSpec.ConfigValue<List<? extends String>> DIMENSION_BLOCK_LIST;
 
@@ -37,6 +38,8 @@ public class Config {
         CLIENT_BUILDER.comment("Client settings").push(CLIENT_SETTINGS);
         REPLACE_PLAYER_LIST = CLIENT_BUILDER.comment("Replace the vanilla player list")
                 .define("replacePlayerList", true);
+        MIN_MEAN_TIME_TICK = CLIENT_BUILDER.comment("Min mean time tick(mspt) to display.", "Less or equal 0.01 to disable.")
+                .defineInRange("minMeanTimeTick", 0D, 0, Double.MAX_VALUE);
         CLIENT_BUILDER.pop();
 
         CLIENT_CONFIG = CLIENT_BUILDER.build();
