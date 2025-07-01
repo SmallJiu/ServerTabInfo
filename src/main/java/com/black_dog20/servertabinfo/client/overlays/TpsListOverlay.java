@@ -150,6 +150,11 @@ public class TpsListOverlay extends GameOverlay.Pre {
                 return false;
             }
         }
+	
+	double min_mspt = Config.MIN_MEAN_TIME_TICK.get();
+        if (min_mspt > 0.01 && dimension.meanTickTime < min_mspt) {
+            return false;
+        }
 
         return true;
     }
